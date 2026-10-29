@@ -28,20 +28,20 @@
     <p class="lede">This booking form asks only what the studio needs to care for a pet safely, explains why each health question is asked, and keeps the total visible the whole way through. This is a design concept — no real booking is submitted.</p>
   </section>
 
-  <div class="layout">
+  <div class="layout" id="visit-layout">
     <section class="panel" aria-label="Booking form">
       <h2>About your pet</h2>
-      <form action="#" method="get">
+      <form id="visit-form" novalidate>
         <div class="row2">
-          <div class="field"><label for="pet-name">Pet's name</label><input id="pet-name" name="pet-name" type="text" value="Maple" autocomplete="off"></div>
+          <div class="field"><label for="pet-name">Pet's name</label><input id="pet-name" name="pet-name" type="text" value="Maple" autocomplete="off"><p class="error" id="err-pet">Please tell us your pet’s name.</p></div>
           <div class="field"><label for="pet-type">Pet type</label><select id="pet-type" name="pet-type"><option selected>Dog — medium (25–50 lb)</option><option>Dog — small (under 25 lb)</option><option>Dog — large (over 50 lb)</option><option>Cat</option></select></div>
         </div>
         <div class="row2">
-          <div class="field"><label for="service">Service</label><select id="service" name="service"><option selected>Full Groom — from $68</option><option>Bath &amp; Brush — from $42</option><option>Daycare — Full Day — $32</option><option>Boarding — per night — from $54</option></select></div>
-          <div class="field"><label for="date">Preferred date</label><input id="date" name="date" type="date" value="2026-11-07"></div>
+          <div class="field"><label for="service">Service</label><select id="service" name="service"><option value="groom" selected>Full Groom — from $68</option><option value="bath">Bath &amp; Brush — from $42</option><option value="daycare">Daycare — Full Day — $32</option><option value="boarding">Boarding — per night — from $54</option></select></div>
+          <div class="field"><label for="date">Preferred date</label><input id="date" name="date" type="date" value="2026-11-07"><p class="error" id="err-date">Please pick a date in the future.</p></div>
         </div>
-        <div class="field"><label for="owner">Your name</label><input id="owner" name="owner" type="text" placeholder="First and last name" autocomplete="name"></div>
-        <div class="field"><label for="contact">Email or phone for the report card</label><input id="contact" name="contact" type="text" placeholder="Where the pickup note &amp; photos should go"><p class="hint">Used only for this visit's updates — the form says so here, before you share it, not in a privacy policy three clicks away.</p></div>
+        <div class="field"><label for="owner">Your name</label><input id="owner" name="owner" type="text" placeholder="First and last name" autocomplete="name"><p class="error" id="err-owner">Please enter your name.</p></div>
+        <div class="field"><label for="contact">Email or phone for the report card</label><input id="contact" name="contact" type="text" placeholder="Where the pickup note &amp; photos should go"><p class="error" id="err-contact">Please enter an email address or phone number.</p><p class="hint">Used only for this visit's updates — the form says so here, before you share it, not in a privacy policy three clicks away.</p></div>
         <div class="field"><label for="notes">Anything we should know? (optional)</label><textarea id="notes" name="notes" rows="3" placeholder="Nervous with dryers, medication at noon, a blanket from home…"></textarea><p class="hint">Mobility, medication, and nerves all help the team plan — there are no wrong answers here.</p></div>
 
         <h3>Add-ons — priced now, not at pickup</h3>
@@ -55,23 +55,29 @@
         <div class="check"><input type="checkbox" id="c2"><label for="c2">Your pet's usual food, if boarding overnight</label></div>
         <div class="check"><input type="checkbox" id="c3"><label for="c3">One comfort item from home — blanket or worn t-shirt</label></div>
 
-        <button class="btn btn-terra" type="submit">Request this visit — $78 total</button>
-        <p class="hint">Concept form only: nothing is submitted, booked, or charged. A real studio would confirm by email or text before the visit is final.</p>
+        <button class="btn btn-terra" type="submit" id="book-btn">Request this visit — $78 total</button>
+        <p class="hint">Demo form: the request completes on this page, but no real booking is submitted or charged. A real studio would confirm by email or text before the visit is final.</p>
       </form>
     </section>
 
     <aside class="panel summary" aria-label="Visit summary">
       <h2>Your visit</h2>
-      <div class="summary-row"><span>Full Groom — Maple</span><strong>$68</strong></div>
-      <div class="summary-row"><span>De-shedding treatment</span><strong>$10</strong></div>
-      <div class="summary-row"><span>Medication, if needed</span><strong>$0</strong></div>
-      <div class="summary-row"><span>Report card &amp; photo</span><strong>Included</strong></div>
-      <div class="summary-row total"><span>Total due at pickup</span><strong>$78</strong></div>
+      <div id="visit-lines"></div>
+      <div class="summary-row total"><span>Total due at pickup</span><strong id="visit-total">$78</strong></div>
       <p class="hint">The total travels with the form and repeats on the button — so the number at the end is the number you saw at the start. If a groom needs extra work, the studio calls for approval before the price changes.</p>
       <h3>Good to know</h3>
       <p class="hint">Drop-off is 7–9 AM for grooms. Pickup gets a text when your pet is ready — usually 2–3 hours for a full groom. Late pickup after 7 PM is $10, stated here rather than as a surprise fee.</p>
     </aside>
   </div>
+
+  <section id="visit-confirmation" class="confirmation" aria-label="Booking request confirmation" hidden>
+    <h2 style="margin-top:0">Visit requested — we’ll take it from here.</h2>
+    <p>Request reference: <strong id="conf-ref"></strong></p>
+    <p id="conf-detail"></p>
+    <p>The studio would confirm by email or text to <strong id="conf-contact"></strong> before the visit is final — drop-off is 7–9 AM for grooms.</p>
+    <p class="hint">This is a portfolio demo — no real booking was submitted and nothing was charged.</p>
+    <p><a class="btn btn-terra" href="visit.html">Book another visit →</a></p>
+  </section>
 
   <section aria-label="Questions">
     <h2>Plain-word questions</h2>
@@ -82,5 +88,6 @@
   </section>
 </div></main>
 <footer><div class="wrap"><p><strong>Willow Creek Pet Studio</strong> is a fictional business. This is an original portfolio concept by Brittany Nation — the form is a design mock and submits no real booking.</p><p><a href="https://github.com/BrittanyNation/pet-studio-site">View the code on GitHub</a></p></div></footer>
+<script src="book.js"></script>
 </body>
 </html>
