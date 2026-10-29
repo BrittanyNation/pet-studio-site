@@ -95,3 +95,9 @@ details summary{font-weight:800;color:var(--teal);cursor:pointer}
 footer{background:var(--teal);color:#DFF0E6;margin-top:40px;padding:28px 0}
 footer a{color:var(--butter)}
 footer strong{color:#fff}
+
+/* --- Working-booking additions (palette colors only) --- */
+.error{display:none;color:var(--terra);font-size:.9rem;margin:.3rem 0 0}
+.error.show{display:block}
+input.invalid{border-color:var(--terra);outline:2px solid var(--terra)}
+.confirmation{background:var(--white);border:2px solid var(--pine);border-radius:14px;padding:1.75rem;margin:1.5rem 0}
