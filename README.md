@@ -20,7 +20,7 @@ Built to support applications for **UI Designer**, **Front-End Designer**, **Web
 - **Honest form design** — a mock booking form that says what contact details will be used for before submission, marks notes as optional, and states plainly that no real booking happens
 - **Accessibility-minded choices** — contrast-safe teal/mint/butter pairings, badges and states that use words, never color alone, skip link, `aria-current` navigation, real `<table>` elements for pricing, native `<details>` FAQs, and real labels on every field
 - **Responsive layout** — stat, service, and note grids step down cleanly on small screens, pricing tables scroll horizontally while remaining readable on phones, and the visit summary stacks below the form on mobile
-- **Semantic, framework-free build** — hand-written HTML/CSS, one stylesheet, no JavaScript required, no external images; all visuals are CSS-only
+- **Semantic, framework-free build** — hand-written HTML/CSS, one stylesheet, vanilla JavaScript powers the booking form, no external images; all visuals are CSS-only
 
 ## Palette
 
@@ -57,3 +57,7 @@ My design workflow runs in **Sketch and Webflow**, where I design interfaces and
 ## Note
 
 This is an original portfolio concept created by Brittany Nation. Willow Creek Pet Studio is a fictional business; this project is not affiliated with any real pet studio. All names, prices, hours, and figures shown are sample data, and the site takes no real bookings.
+
+## Working booking form
+
+`book.js` makes the visit form real: service and add-on choices update the visit summary and total live (including the pet's name), the form validates date, owner, and contact details, and submitting ends in a booking-request confirmation with a generated reference. Front-end demo only — no real booking is submitted.
